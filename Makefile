@@ -2,11 +2,11 @@ all:ftpserver
 
 CC=gcc
 CFLAGS=-D DEBUG
-
+LDFLAGS= -lpthread
 OBJS=main.o
 
 ftpserver:$(OBJS)
-	$(CC) $< -o $@
+	$(CC) $< -o $@ $(LDFLAGS)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c $< -o $@
