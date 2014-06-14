@@ -3,10 +3,10 @@ all:ftpserver
 CC=gcc
 CFLAGS=-D DEBUG
 LDFLAGS= -lpthread
-OBJS=main.o
+OBJS=main.o connection.o command.o
 
 ftpserver:$(OBJS)
-	$(CC) $< -o $@ $(LDFLAGS)
+	$(CC) $(OBJS) -o $@ $(LDFLAGS)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -14,7 +14,7 @@ ftpserver:$(OBJS)
 
 
 clean:
-	@rm -f *.o
-	@rm ftpserver
-
+	rm -f *.o
+	rm -f ftpserver
+	rm -f *.txt
 
